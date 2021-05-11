@@ -1,21 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package chapters1.pkg7;
 
-/**
- *
- * @author EricC
- */
+import java.util.ArrayList;
+
 public class Chapters17 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        System.out.println("Hello world!");
+        ArrayList<String> friends;
+        friends = new ArrayList<>();
+        
+        friends.add("Larry");
+        
+        friends.add("Vlad");
+        
+        friends.add("Alan");
+        
+        for ( int index = 0; index < friends.size(); index++ ){
+            System.out.println(friends.get(index));
+        }
+        
+        for ( String friend : friends ){
+            System.out.println(friend);
+        }
+        
+        String[] friendsArray = new String[3];
+        friendsArray[0] = "Larry";
+        friendsArray[1] = "Vlad";
+        friendsArray[2] = "Alan";
+        
+        
     }
     
 }
