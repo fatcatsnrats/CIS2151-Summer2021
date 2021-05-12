@@ -29,6 +29,14 @@ public class Chapters17 {
         friendsArray[1] = "Vlad";
         friendsArray[2] = "Alan";
         
+        for ( int index = 0; index < friendsArray.length; index++ ){
+            System.out.println(friendsArray[index]);
+        }
+        
+        for ( String friend : friendsArray ){
+            System.out.println(friend);
+        }
+        
         
     }
     
