@@ -55,5 +55,9 @@ public class BankAccount {
                 name, accountNumber, balance);
     }
     
+    public boolean equals(BankAccount other){
+        return accountNumber == other.accountNumber;
+    }
+    
     
 }

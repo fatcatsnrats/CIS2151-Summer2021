@@ -19,8 +19,17 @@ public class Chapter8 {
         BankAccount savings = new BankAccount("savings");
         BankAccount checking = new BankAccount("checking");
         
+        BankAccount anotherSavings = new BankAccount("savings");
+        
         askForDeposit(checking);
-        savings = askForDeposit(savings);
+        askForDeposit(savings);
+        askForDeposit(anotherSavings);
+        
+        // what == checks for objects ( by default ), is, do they have the same memory address
+        System.out.println("savings == anotherSavings : " + (savings == anotherSavings));
+        
+        System.out.println("savings.equals(anotherSavings) : " + (savings.equals(anotherSavings)));
+        
         
         System.out.println(savings);
         System.out.println(checking);
@@ -31,7 +40,7 @@ public class Chapter8 {
     public static BankAccount askForDeposit(BankAccount account){
         Scanner keyboard = new Scanner(System.in);
         
-        System.out.println("How much did you want to depost to your " + account.getName() + "?");
+        System.out.println("How much did you want to deposit to your " + account.getName() + "?");
         double deposit = Double.parseDouble(keyboard.nextLine());
         
         account.deposit(deposit);
