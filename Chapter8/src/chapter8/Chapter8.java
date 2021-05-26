@@ -45,6 +45,7 @@ public class Chapter8 {
         
         account.deposit(deposit);
         
+        // this doesn't change the original bank account, only assings the variable in the method a new value
         account = new BankAccount("I stole your money!");
         
         return account;
