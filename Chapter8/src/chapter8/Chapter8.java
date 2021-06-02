@@ -13,13 +13,24 @@ public class Chapter8 {
         firstShape.setSideLength(3, 5);
         firstShape.setSideLength(4, 6);
         
+        // not a copy - two variables pointed to the same object - shallow copy, not even a coyp
+        Polygon notACopyOfFirstShape = firstShape;
+        
+        // deep copy
+        Polygon coypOfFirstShape = new Polygon(firstShape);
+        
+        
         System.out.println(firstShape.getPerimeter());
         
         
-        BankAccount savings = new BankAccount("savings");
-        BankAccount checking = new BankAccount("checking");
+        BankAccount savings = new BankAccount("first account");
+        savings = new BankAccount("other first account"); // first account created will get garbaged collected
+        savings.setAccountType(BankAccount.AccountType.SAVINGS);
+        BankAccount checking = new BankAccount("second account");
+        checking.setAccountType(BankAccount.AccountType.CHECKING);
         
         BankAccount anotherSavings = new BankAccount("savings");
+        anotherSavings.setAccountType(BankAccount.AccountType.SAVINGS);
         
         askForDeposit(checking);
         askForDeposit(savings);
@@ -29,7 +40,7 @@ public class Chapter8 {
         System.out.println("savings == anotherSavings : " + (savings == anotherSavings));
         
         System.out.println("savings.equals(anotherSavings) : " + (savings.equals(anotherSavings)));
-        
+        System.out.println("savings == firstShape: " + savings.equals(firstShape));
         
         System.out.println(savings);
         System.out.println(checking);
