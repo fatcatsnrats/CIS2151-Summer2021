@@ -1,21 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package project2.holdem;
 
-/**
- *
- * @author EricC
- */
+
 public class Project2Holdem {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        for( Card.Suit suit : Card.Suit.values() ){
+            for ( Card.Face face : Card.Face.values() ){
+                System.out.println(new Card(face, suit));
+            }
+        }
     }
     
 }
