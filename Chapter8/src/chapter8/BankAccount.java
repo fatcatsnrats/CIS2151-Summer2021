@@ -7,7 +7,7 @@ public class BankAccount implements Comparable<BankAccount> {
         // returning a negative value means this account is less than the other account
         // return 0 means they are equivalent
         // returning a positive value means this account is greater than the other account
-        return (int)balance - other.balance;
+        return (int)(balance - other.balance);
     }
 
     public enum AccountType { CHECKING, SAVINGS, MONEYMARKET, CERTIFICATE_OF_DEPOSIT };
