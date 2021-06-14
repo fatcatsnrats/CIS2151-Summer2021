@@ -53,7 +53,7 @@ public class Project2Holdem {
         npc = new Npc();
         //call();
         // deck.deckMakerFive();
-        bettingOne();
+        start();
       //  bettingThree();
 //        int i = 0;
 //        int j = 0;
@@ -89,19 +89,11 @@ public class Project2Holdem {
     }
 
     public static void start() {
-
+        bettingOne();
     }
 
     public static void print(String text) {
         System.out.println(text);
-    }
-
-    public static void cardMaker() {
-        for (Card.Suit suit : Card.Suit.values()) {
-            for (Card.Face face : Card.Face.values()) {
-                Card newCard = new Card(face, suit);
-            }
-        }
     }
 
     public static void call() {
@@ -151,6 +143,9 @@ public class Project2Holdem {
                     npc.setPot(npcPot + 2);
                     npc.setMoney(tempMoney - 2);
                     playerTurn = false;
+                    print("You have put $1 into the pot, while your opponent"
+                            + " has put $2");
+                    print("Your balance is now $" + )
                 } else {
                     tempMoney = npc.getMoney();
                     int npcPot = npc.getPot();
@@ -161,6 +156,8 @@ public class Project2Holdem {
                     player.setPot(playerPot + 2);
                     player.setMoney(tempMoney - 2);
                     playerTurn = true;
+                    print("You have put $2 into the pot, while your opponent"
+                            + " has put $1");
                 }
             } else {
                 gameoverNpc();
@@ -352,8 +349,8 @@ public class Project2Holdem {
             start();
         } else {
             print("We hope to see you soon!");
+            System.exit(0);
         }
-        System.exit(0);
     }
 
 }
