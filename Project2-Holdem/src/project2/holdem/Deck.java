@@ -16,7 +16,8 @@ public class Deck {
 
     ArrayList<Card> fullDeck;
     ArrayList<Card> fiveDeck;
-    ArrayList<Card> twoDeck;
+    ArrayList<Card> twoDeckPlayer;
+    ArrayList<Card> twoDeckNpc;
     Random rand;
     int[] countOfFaces;
 
@@ -36,50 +37,83 @@ public class Deck {
         this.fiveDeck = fiveDeck;
     }
 
-    public ArrayList<Card> getTwoDeck() {
-        return twoDeck;
+    public ArrayList<Card> getTwoDeckPlayer() {
+        return twoDeckPlayer;
     }
 
-    public void setTwoDeck(ArrayList<Card> twoDeck) {
-        this.twoDeck = twoDeck;
+    public void setTwoDeckPlayer(ArrayList<Card> twoDeckPlayer) {
+        this.twoDeckPlayer = twoDeckPlayer;
+    }
+
+    public ArrayList<Card> getTwoDeckNpc() {
+        return twoDeckNpc;
+    }
+
+    public void setTwoDeckNpc(ArrayList<Card> twoDeckNpc) {
+        this.twoDeckNpc = twoDeckNpc;
     }
 
     public Deck() {
         countOfFaces = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         fullDeck = new ArrayList<>();
         fiveDeck = new ArrayList<>();
-        twoDeck = new ArrayList<>();
+        twoDeckPlayer = new ArrayList<>();
+        twoDeckNpc = new ArrayList<>();
         for (Card.Suit suit : Card.Suit.values()) {
             for (Card.Face face : Card.Face.values()) {
                 fullDeck.add(new Card(face, suit));
-                  // System.out.println(fullDeck);
+                // System.out.println(fullDeck);
 
                 //   countOfFaces[card.getFace().ordinal()]++;
             }
         }
-        
-     //   deckMakerFive();
-     //   deckMakerTwo();
+
+        //   deckMakerFive();
+        //   deckMakerTwo();
     }
 
     public ArrayList<Card> deckMakerFive() {
         fiveDeck = new ArrayList<>();
         rand = new Random();
         for (int i = 0; i <= 4; i++) {
-            int randInt = rand.nextInt(51);
+            int randInt = rand.nextInt(51) + 1;
+            while (fiveDeck.contains(fullDeck.get(randInt))) {
+                randInt = rand.nextInt(51) + 1;
+            }
             fiveDeck.add(fullDeck.get(randInt));
-      //      System.out.println(fullDeck.get(randInt));
+            //      System.out.println(fullDeck.get(randInt));
         }
         return fiveDeck;
     }
-    public ArrayList<Card> deckMakerTwo() {
-        twoDeck = new ArrayList<>();
+
+    public ArrayList<Card> deckMakerTwoPlayer() {
+        twoDeckPlayer = new ArrayList<>();
         rand = new Random();
         for (int i = 0; i <= 1; i++) {
-            int randInt = rand.nextInt(51);
-            twoDeck.add(fullDeck.get(randInt));
-       //     System.out.println(fullDeck.get(randInt));
+            int randInt = rand.nextInt(51) + 1;
+            while (fiveDeck.contains(fullDeck.get(randInt))
+                    || twoDeckPlayer.contains(fullDeck.get(randInt))) {
+                randInt = rand.nextInt(51) + 1;
+            }
+            twoDeckPlayer.add(fullDeck.get(randInt));
+            //     System.out.println(fullDeck.get(randInt));
         }
-        return twoDeck;
+        return twoDeckPlayer;
+    }
+
+    public ArrayList<Card> deckMakerTwoNpc() {
+        twoDeckNpc = new ArrayList<>();
+        rand = new Random();
+        for (int i = 0; i <= 1; i++) {
+            int randInt = rand.nextInt(51) + 1;
+            while (fiveDeck.contains(fullDeck.get(randInt))
+                    || twoDeckPlayer.contains(fullDeck.get(randInt))
+                    || twoDeckNpc.contains(fullDeck.get(randInt))) {
+                randInt = rand.nextInt(51) + 1;
+            }
+            twoDeckNpc.add(fullDeck.get(randInt));
+            //     System.out.println(fullDeck.get(randInt));
+        }
+        return twoDeckNpc;
     }
 }

@@ -28,8 +28,6 @@ public class Player {
     public Player() {
         money = 100;
         pot = 0;
-        Deck deckTwo = new Deck();
-        deck = deckTwo.deckMakerTwo();
         //System.out.println(deck);
     }
 
@@ -39,14 +37,6 @@ public class Player {
 
     public void setMoney(int money) {
         this.money = money;
-    }
-
-    public ArrayList<Card> getDeck() {
-        return deck;
-    }
-
-    public void setDeck(ArrayList<Card> deck) {
-        this.deck = deck;
     }
     
 }
