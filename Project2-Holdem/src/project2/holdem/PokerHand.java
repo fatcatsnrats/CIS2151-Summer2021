@@ -255,7 +255,7 @@ public class PokerHand implements Comparable<PokerHand> {
     }
 
     private int getIndexForHigherPair() {
-        for (int index = countOfFaces.length; index >= 0; index--) {
+        for (int index = countOfFaces.length - 1; index >= 0; index--) {
             if (countOfFaces[index] == 2) {
                 return index;
             }
