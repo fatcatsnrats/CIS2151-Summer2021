@@ -103,5 +103,9 @@ public class HoldemHand implements Comparable<HoldemHand>{
     {
         return card1.toString() + " " + card2.toString();
     }
+    
+    public double oddsOfWinning(){
+       return 0; // TODO 
+    }
 
 }
