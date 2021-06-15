@@ -81,7 +81,7 @@ public class Project2Holdem {
                 int potPlayer = player.getPot();
                 int potNpc = npc.getPot();
                 player.setMoney(moneyPlayer + potNpc + potPlayer);
-                print("You won the $" + (potNpc + potPlayer) + " pot!!!");
+                print("You won $" + (potNpc + potPlayer) + "!!!");
                 gameover();
                 break;
             // bettingOne();
@@ -97,7 +97,7 @@ public class Project2Holdem {
                 potPlayer = player.getPot();
                 potNpc = npc.getPot();
                 npc.setMoney(moneyNpc + potNpc + potPlayer);
-                print("You lost the $" + (potNpc + potPlayer) + " pot!!!");
+                print("You lost $" + (potNpc + potPlayer) + "!!!");
                 gameover();
                 break;
             default:
@@ -212,9 +212,9 @@ public class Project2Holdem {
         }
         Collections.sort(resultArray);
 
-//        for (Results res : resultArray) {
-//            System.out.println(res);
-//        }
+        for (Results res : resultArray) {
+            System.out.println(res);
+        }
         otherResultArray = new ArrayList<>();
         for (int i = 0; i < 21; i++) {
             otherhand = new PokerHand(otherArrayOfArray.get(i));
@@ -247,8 +247,6 @@ public class Project2Holdem {
     }
 
     public static String getRank(int rankToString) {
-        deck.deckMakerTwoPlayer();
-        deck.deckMakerTwoNpc();
         switch (rankToString) {
             case 8:
                 return "Straight Flush";
@@ -441,6 +439,7 @@ public class Project2Holdem {
                 int potNpc = npc.getPot();
                 player.setMoney(moneyPlayer + potNpc + potPlayer);
                 print("You won $" + (potNpc + potPlayer) + "!!!");
+                deck = new Deck();
                 gameover();
             }
             npc.setMoney(tempMoney - total);
@@ -454,6 +453,7 @@ public class Project2Holdem {
             int potNpc = npc.getPot();
             player.setMoney(moneyPlayer + potNpc + potPlayer);
             print("You won $" + (potNpc + potPlayer) + "!!!");
+            deck = new Deck();
             gameover();
         }
         playerTurn = true;
@@ -509,8 +509,6 @@ public class Project2Holdem {
             print("You have just folded");
             int playerMoney = player.getMoney();
             print("Your current balance is $" + playerMoney);
-            deck.deckMakerTwoPlayer();
-        deck.deckMakerTwoNpc();
             gameover();
         } else {
             print("We didn't understand what you said, please try again");
@@ -529,9 +527,6 @@ public class Project2Holdem {
     }
 
     public static void gameover() {
-        deck = new Deck();
-        deck.deckMakerTwoPlayer();
-        deck.deckMakerTwoNpc();
         player.setPot(0);
         npc.setPot(0);
         int playerMoney = player.getMoney();

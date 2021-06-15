@@ -18,7 +18,7 @@ public class Deck {
     ArrayList<Card> fiveDeck;
     ArrayList<Card> twoDeckPlayer;
     ArrayList<Card> twoDeckNpc;
-    Random rand;
+    static Random rand;
     int[] countOfFaces;
 
     public ArrayList<Card> getFullDeck() {
