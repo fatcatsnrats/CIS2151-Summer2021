@@ -11,6 +11,12 @@ public class Square extends Rectangle {
         setLength(sideLength);
     }
     
+    // can't override something that is final
+//    @Override
+//    public int getPerimeter(){
+//        
+//    }
+    
     @Override
     public void setLength(int length){
         super.setLength(length);

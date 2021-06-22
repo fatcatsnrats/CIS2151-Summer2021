@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class Polygon {
 
     private String name;
-    private final int numberOfSides;
+    protected final int numberOfSides; // protected allows for subclasses to have direct access
     private final ArrayList<Integer> sideLengths;
 
     public Polygon(String name, int numberOfSides) {
@@ -29,7 +29,7 @@ public abstract class Polygon {
         return sideLengths.get(sideIndex);
     }
 
-    public int getPerimeter() {
+    public final int getPerimeter() {
         int perimeter = 0;
 
         for (int sideLength : sideLengths) {
