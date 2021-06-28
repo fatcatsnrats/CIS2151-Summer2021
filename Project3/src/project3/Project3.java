@@ -32,27 +32,25 @@ public class Project3 {
     }
 
     public static void direction() {
+        System.out.println("You are now at: ");
+        System.out.println("X = " + i + "     Y = " + j);
         if (i >= 1) {
             space = gridSpace.get(i - 1).get(j);
-            System.out.println("Above you is a ");
-            System.out.println(space);
+            System.out.println("Above you is " + space);
         }
         if (j <= 12) {
             space1 = gridSpace.get(i).get(j + 1);
-            System.out.println("To the right of you is a ");
-            System.out.println(space1);
+            System.out.println("To the right of you is " + space1);
         }
         if (i <= 10) {
             space2 = gridSpace.get(i + 1).get(j);
-            System.out.println("Below you is a ");
-            System.out.println(space2);
+            System.out.println("Below you is " + space2);
         }
         if (j >= 1) {
             space3 = gridSpace.get(i).get(j - 1);
-            System.out.println("To the left of you is a ");
-            System.out.println(space3);
+            System.out.println("To the left of you is " + space3);
         }
-        
+
         System.out.println("What direction do you want to go to?");
         Scanner keyboard = new Scanner(System.in);
         String keyboardString = keyboard.nextLine();
@@ -78,18 +76,26 @@ public class Project3 {
             Scanner keyboard = new Scanner(System.in);
             if (keyboard.nextLine().equalsIgnoreCase("chop")) {
                 temp = designatedSpace.chop(player);
+//                ChoppableSpace choppableSpace = new ChoppableSpace();
+//                choppableSpace.chop(player);
+//                System.out.println(designatedSpace.getDescription());
                 if (!temp) {
                     System.out.println("You dont have to right tool!");
                     spaceAction(designatedSpace);
                 } else {
+                    System.out.println(designatedSpace.getDescription());
                     direction();
                 }
             } else if (keyboard.nextLine().equalsIgnoreCase("build")) {
+//                BuildableSpace buildableSpace = new BuildableSpace();
+//                buildableSpace.build(player);
+//                 System.out.println(designatedSpace.getDescription());
                 temp = designatedSpace.build(player);
                 if (!temp) {
                     System.out.println("You dont have to right tool!");
                     spaceAction(designatedSpace);
                 } else {
+                    System.out.println(designatedSpace.getDescription());
                     direction();
                 }
             } else {
@@ -104,14 +110,18 @@ public class Project3 {
                     System.out.println("You dont have to right tool!");
                     spaceAction(designatedSpace);
                 } else {
+                    System.out.println(designatedSpace.getDescription());
                     direction();
                 }
             } else if (keyboard.nextLine().equalsIgnoreCase("build")) {
+//                BuildableSpace buildableSpace = new BuildableSpace();
+//                buildableSpace.build(player);
                 temp = designatedSpace.build(player);
                 if (!temp) {
                     System.out.println("You dont have to right tool!");
                     spaceAction(designatedSpace);
                 } else {
+                    System.out.println(designatedSpace.getDescription());
                     direction();
                 }
             } else {
@@ -119,21 +129,21 @@ public class Project3 {
             }
         } else {
             Random rand = new Random();
-            Player player = new Player();
             int randInt2 = rand.nextInt(9);
             if (randInt2 <= 3) {
-                player.setTools("axe");
+                player.setCanChop(true);
                 System.out.println("You picked up an Axe!");
                 ///pickup axe
             } else if (randInt2 <= 6) {
-                player.setTools("shovel");
+                player.setCanDig(true);
                 System.out.println("You picked up a Shovel!");
                 ///pickup shovel
             } else {
-                player.setTools("hammer");
+                player.setCanBuild(true);
                 System.out.println("You picked up a Hammer!");
                 //pickup hammer
             }
+            System.out.println("");
             designatedSpace.setDescription("Empty");
             direction();
         }

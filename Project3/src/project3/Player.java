@@ -15,29 +15,10 @@ public class Player {
     boolean canChop;
     int toolCounter;
 
-    public boolean canBuild() {
-          for (int i = 0;i <= 10; i++ ) {
-           System.out.println(tools[i]);
-           if (tools[i].equalsIgnoreCase("hammer")) {
-               return true;
-           } 
-       }
-       return false;
-    }
-
     public void setCanBuild(boolean canBuild) {
         this.canBuild = canBuild;
     }
 
-    public boolean canChop() {
-          for (int i = 0; i <= 10; i++ ) {
-           System.out.println(tools[i]);
-           if (tools[i].equalsIgnoreCase("axe")) {
-               return true;
-           } 
-       }
-       return false;
-    }
 
     public void setCanChop(boolean canChop) {
         this.canChop = canChop;
@@ -51,18 +32,20 @@ public class Player {
         
     }
 
-    public boolean isCanDig() {
+    public boolean canDig() {
         return canDig;
     }
 
-    public boolean canDig() {
-       for (int i = 0;i <= 10; i++ ) {
-           System.out.println(tools[i]);
-           if (tools[i].equalsIgnoreCase("shovel")) {
-               return true;
-           } 
-       }
-       return false;
+    public void setCanDig(boolean canDig) {
+        this.canDig = canDig;
+    }
+
+    public boolean canBuild() {
+        return canBuild;
+    }
+
+    public boolean canChop() {
+        return canChop;
     }
 
     public String getName() {
