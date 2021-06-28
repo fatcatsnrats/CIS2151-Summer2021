@@ -38,11 +38,11 @@ public class Project3 {
             space = gridSpace.get(i - 1).get(j);
             System.out.println("Above you is " + space);
         }
-        if (j <= 12) {
+        if (j <= 10) {
             space1 = gridSpace.get(i).get(j + 1);
             System.out.println("To the right of you is " + space1);
         }
-        if (i <= 10) {
+        if (i <= 8) {
             space2 = gridSpace.get(i + 1).get(j);
             System.out.println("Below you is " + space2);
         }
@@ -55,17 +55,37 @@ public class Project3 {
         Scanner keyboard = new Scanner(System.in);
         String keyboardString = keyboard.nextLine();
         if (keyboardString.equalsIgnoreCase("Above")) {
+            if (i >= 1) {
             i--;
             spaceAction(space);
+            } else {
+                System.out.println("You cannot do that!");
+                direction();
+            }
         } else if (keyboardString.equalsIgnoreCase("Below")) {
+            if (j <= 10) {
             i++;
             spaceAction(space2);
+            } else {
+                System.out.println("You cannot do that!");
+                direction();
+            }
         } else if (keyboardString.equalsIgnoreCase("Right")) {
+            if (i <= 8) {
             j++;
             spaceAction(space1);
+            } else {
+                System.out.println("You cannot do that!");
+                direction();
+            }
         } else if (keyboardString.equalsIgnoreCase("Left")) {
+            if (j >= 1) {
             j--;
             spaceAction(space3);
+            } else {
+                System.out.println("You cannot do that!");
+                direction();
+            }
         }
     }
 
@@ -74,60 +94,112 @@ public class Project3 {
         if (designatedSpace.getDescription().equalsIgnoreCase("Woodland")) {
             System.out.println("Do you want to chop, build, or go somewhere else?");
             Scanner keyboard = new Scanner(System.in);
-            if (keyboard.nextLine().equalsIgnoreCase("chop")) {
-                temp = designatedSpace.chop(player);
-//                ChoppableSpace choppableSpace = new ChoppableSpace();
-//                choppableSpace.chop(player);
-//                System.out.println(designatedSpace.getDescription());
-                if (!temp) {
-                    System.out.println("You dont have to right tool!");
-                    spaceAction(designatedSpace);
-                } else {
-                    System.out.println(designatedSpace.getDescription());
+            switch (keyboard.nextLine()) {
+                case "chop":
+                    temp = designatedSpace.chop(player);
+                    if (!temp) {
+                        System.out.println("You dont have to right tool!");
+                        spaceAction(designatedSpace);
+                    } else {
+                        System.out.println(designatedSpace.getDescription());
+                        direction();
+                    }
+                    break;
+                case "build":
+                    temp = designatedSpace.build(player);
+                    if (!temp) {
+                        System.out.println("You dont have to right tool!");
+                        spaceAction(designatedSpace);
+                    } else {
+                        System.out.println(designatedSpace.getDescription());
+                        direction();
+                    }
+
+                    break;
+                default:
                     direction();
-                }
-            } else if (keyboard.nextLine().equalsIgnoreCase("build")) {
-//                BuildableSpace buildableSpace = new BuildableSpace();
-//                buildableSpace.build(player);
-//                 System.out.println(designatedSpace.getDescription());
-                temp = designatedSpace.build(player);
-                if (!temp) {
-                    System.out.println("You dont have to right tool!");
-                    spaceAction(designatedSpace);
-                } else {
-                    System.out.println(designatedSpace.getDescription());
-                    direction();
-                }
-            } else {
-                direction();
             }
+//            if (keyboard.nextLine().equalsIgnoreCase("chop")) {
+//                temp = designatedSpace.chop(player);
+////                ChoppableSpace choppableSpace = new ChoppableSpace();
+////                choppableSpace.chop(player);
+////                System.out.println(designatedSpace.getDescription());
+//                if (!temp) {
+//                    System.out.println("You dont have to right tool!");
+//                    spaceAction(designatedSpace);
+//                } else {
+//                    System.out.println(designatedSpace.getDescription());
+//                    direction();
+//                }
+//            }
+//            if (keyboard.nextLine().equalsIgnoreCase("build")) {
+////                BuildableSpace buildableSpace = new BuildableSpace();
+////                buildableSpace.build(player);
+////                 System.out.println(designatedSpace.getDescription());
+//                temp = designatedSpace.build(player);
+//                if (!temp) {
+//                    System.out.println("You dont have to right tool!");
+//                    spaceAction(designatedSpace);
+//                } else {
+//                    System.out.println(designatedSpace.getDescription());
+//                    direction();
+//                }
+//            } else {
+//                direction();
+//            }
         } else if (designatedSpace.getDescription().equalsIgnoreCase("Empty")) {
             System.out.println("Do you want to dig, build, or go somewhere else?");
             Scanner keyboard = new Scanner(System.in);
-            if (keyboard.nextLine().equalsIgnoreCase("dig")) {
-                temp = designatedSpace.dig(player);
-                if (!temp) {
-                    System.out.println("You dont have to right tool!");
-                    spaceAction(designatedSpace);
-                } else {
-                    System.out.println(designatedSpace.getDescription());
+            switch (keyboard.nextLine()) {
+                case "dig":
+                    temp = designatedSpace.dig(player);
+                    if (!temp) {
+                        System.out.println("You dont have to right tool!");
+                        spaceAction(designatedSpace);
+                    } else {
+                        System.out.println(designatedSpace.getDescription());
+                        direction();
+                    }
+
+                    break;
+                case "build":
+                    temp = designatedSpace.build(player);
+                    if (!temp) {
+                        System.out.println("You dont have to right tool!");
+                        spaceAction(designatedSpace);
+                    } else {
+                        System.out.println(designatedSpace.getDescription());
+                        direction();
+                    }
+                    break;
+                default:
                     direction();
-                }
-            } else if (keyboard.nextLine().equalsIgnoreCase("build")) {
-//                BuildableSpace buildableSpace = new BuildableSpace();
-//                buildableSpace.build(player);
-                temp = designatedSpace.build(player);
-                if (!temp) {
-                    System.out.println("You dont have to right tool!");
-                    spaceAction(designatedSpace);
-                } else {
-                    System.out.println(designatedSpace.getDescription());
-                    direction();
-                }
-            } else {
-                direction();
             }
-        } else {
+//            if (keyboard.nextLine().equalsIgnoreCase("dig")) {
+//                temp = designatedSpace.dig(player);
+//                if (!temp) {
+//                    System.out.println("You dont have to right tool!");
+//                    spaceAction(designatedSpace);
+//                } else {
+//                    System.out.println(designatedSpace.getDescription());
+//                    direction();
+//                }
+//            }
+//            if (keyboard.nextLine().equalsIgnoreCase("build")) {
+////                BuildableSpace buildableSpace = new BuildableSpace();
+////                buildableSpace.build(player);
+//                temp = designatedSpace.build(player);
+//                if (!temp) {
+//                    System.out.println("You dont have to right tool!");
+//                    spaceAction(designatedSpace);
+//                } else {
+//                    System.out.println(designatedSpace.getDescription());
+//                    direction();
+//                }
+//            } else {
+//                direction();
+//            }
+        } else if (designatedSpace.getDescription().equalsIgnoreCase("Hidden")) {
             Random rand = new Random();
             int randInt2 = rand.nextInt(9);
             if (randInt2 <= 3) {
@@ -145,6 +217,8 @@ public class Project3 {
             }
             System.out.println("");
             designatedSpace.setDescription("Empty");
+            direction();
+        } else {
             direction();
         }
     }
