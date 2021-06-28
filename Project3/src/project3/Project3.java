@@ -25,6 +25,10 @@ public class Project3 {
 
     public static void game() {
         Island island = new Island();
+        System.out.println("What is your name?");
+        Scanner keyboard = new Scanner(System.in);
+        String name = keyboard.nextLine();
+        island.setOwner(name);
         System.out.println(island);
         gridSpace = island.getGrid();
         direction();

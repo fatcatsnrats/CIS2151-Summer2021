@@ -8,6 +8,7 @@ public class Island {
     ArrayList<ArrayList<Space>> grid;
     ArrayList<String> trusted;
     ArrayList<String> notTrusted;
+    String owner;
 
     public Island() {
         trusted = new ArrayList<>();
@@ -24,6 +25,30 @@ public class Island {
         }
     }
 
+    public Island(String relationship) {
+        trusted = new ArrayList<>();
+        notTrusted = new ArrayList<>();
+        grid = new ArrayList<ArrayList<Space>>();
+        //Random random = new Random();
+
+        for (int rowIndex = 0; rowIndex < 10; rowIndex++) {
+            grid.add(new ArrayList<Space>());
+            for (int columnIndex = 0; columnIndex < 12; columnIndex++) {
+                grid.get(rowIndex).add(
+                        new Space());
+            }
+        }
+        owner = relationship;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
     public ArrayList<ArrayList<Space>> getGrid() {
         return grid;
     }
@@ -31,11 +56,11 @@ public class Island {
     public void setGrid(ArrayList<ArrayList<Space>> grid) {
         this.grid = grid;
     }
-    
+
     public void setTrusted(String name) {
         trusted.add(name);
     }
-    
+
     public void setNotTrusted(String name) {
         notTrusted.add(name);
     }
@@ -43,11 +68,11 @@ public class Island {
     public ArrayList<String> getTrusted() {
         return trusted;
     }
-    
+
     public ArrayList<String> getNotTrusted() {
         return notTrusted;
     }
-    
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
